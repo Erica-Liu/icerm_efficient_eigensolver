@@ -6,7 +6,7 @@ import networkx as nx
 import scipy
 
 from matplotlib import pyplot as plt
-import ../WebCrawler/scraper.scraper as scraper
+
 
 def power_iteration_application_test():
     A = np.array([[1.5, 0.5], [0.5, 1.5]])
@@ -63,12 +63,11 @@ def stochastic_transition_matrix_from_G(G, weight, adaptive):
     P_prime = P + D
     S = np.ones(shape=(N, N))
     S = np.multiply(S, 1 / N)
-    
+
     Aw = np.multiply(P_prime, 1 - weight)
     Sw = np.multiply(S, weight)
     M = Aw + Sw
     return M
-
 
 
 def multiplication_with_P(P, c, x):
@@ -87,14 +86,6 @@ def PageRank(G, weight):
 
     return pi.PowerMethod(M,True, 0.01)[0]
 
-
-
-if __name__ == '__main__':
-    print("###Power Iteration Test###")
-    power_iteration_application_test()
-
-    #print("###Page Rank Test###")
-    #page_rank_application_test()
 
 
 
