@@ -32,8 +32,9 @@ def page_rank_application_test():
     print("Limiting Distribution: ")
     print(PageRank(G, 0.15))
 
-def stochastic_transition_matrix(G, weight, adaptive):
 
+
+def stochastic_transition_matrix_from_G(G, weight, adaptive):
     Aj = nx.to_numpy_matrix(G).A
     N = len(G.nodes)
     v = np.empty()
@@ -49,7 +50,6 @@ def stochastic_transition_matrix(G, weight, adaptive):
             for i in range(N):
                 P[i][j] = Aj[i][j] / out_deg
 
-
     if adaptive:
         return P
     else:
@@ -60,12 +60,11 @@ def stochastic_transition_matrix(G, weight, adaptive):
                 d[i] = 1
         D = d.dot(v)
 
-
-
-
-        S = np.ones(shape=(N, N))
-        S = np.multiply(S, 1 / N)
-    Aw = np.multiply(A, 1 - weight)
+    P_prime = P + D
+    S = np.ones(shape=(N, N))
+    S = np.multiply(S, 1 / N)
+    
+    Aw = np.multiply(P_prime, 1 - weight)
     Sw = np.multiply(S, weight)
     M = Aw + Sw
     return M
