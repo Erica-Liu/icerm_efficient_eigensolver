@@ -34,7 +34,6 @@ def page_rank_application_test():
 
 def stochastic_transition_matrix_from_G(G, adaptive, weight=0.15):
     Aj = nx.to_numpy_matrix(G).A
-    print(Aj)
 
     N = len(G.nodes)
     v = np.empty(shape=(N,1))

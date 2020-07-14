@@ -61,7 +61,7 @@ if __name__ == '__main__':
     func = args.func
     """
     #comment this out and change your func if you don't want to use shell
-    url = "https://www.thepythoncode.com"
+    url = "https://icerm.brown.edu/"
     max_urls = 10
     func = PowerMethod
 
